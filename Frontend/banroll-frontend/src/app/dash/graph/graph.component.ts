@@ -43,7 +43,7 @@ export class GraphComponent implements OnInit, OnChanges, AfterViewInit {
             type: 'linear',
             max: 2000,
             min: -2000,
-            beginAtZero: false,
+            beginAtZero: true,
           },
         },
         responsive: true,

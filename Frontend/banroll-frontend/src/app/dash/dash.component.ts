@@ -63,6 +63,31 @@ export class DashComponent implements OnInit{
     this.user1 = await this.dashService.getUser(userID);
     this.updatedSessions =  (await this.dashService.sessionsByUser()).sort((a: session, b: session ) => a.id - b.id);
   }
+
+  async submitRandomSes(): Promise<void> {
+    const userID = 1;
+    
+    for(let i = 0; i < 10; i++){
+      let randSes = {
+        user_id: 1,
+        buyIn: Math.floor(Math.random() * 3000) + 1,
+        cashOut: Math.floor(Math.random() * 3000) + 1,
+        timePlayed: Math.floor(Math.random() * 10) + 1,
+      };
+      await this.dashService.submitSession(randSes);
+    }
+    
+    
+    await this.dashService.updateUser();
+    this.user1 = await this.dashService.getUser(userID);
+    this.updatedSessions =  (await this.dashService.sessionsByUser()).sort((a: session, b: session ) => a.id - b.id);
+    this.newSession = {
+      user_id: 1,
+      buyIn: 0,
+      cashOut: 0,
+      timePlayed: 0
+    }
+}
 }
 
 class session {
