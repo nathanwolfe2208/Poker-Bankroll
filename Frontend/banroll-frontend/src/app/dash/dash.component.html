@@ -1,0 +1,24 @@
+<div class="container mx-auto">
+  <app-user-stats [userStats]="user1"></app-user-stats>
+
+  <form (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label class="font-bold">Buy In:</label>
+      <input type="number" [(ngModel)]="newSession.buyIn" name="buyIn" class="input-box">
+
+      <label class="font-bold">Cash Out:</label>
+      <input type="number" [(ngModel)]="newSession.cashOut" name="cashOut" class="input-box">
+
+      <label class="font-bold">Time Played:</label>
+      <input type="number" [(ngModel)]="newSession.timePlayed" name="timePlayed" class="input-box">
+    </div>
+    <button type="submit" class="btn font-bold">Submit New Session</button>
+  </form>
+
+  <h2 class="text-2xl font-bold mb-4">Sessions</h2>
+
+  <div class="flex justify-between">
+    <app-new-sessions [Sessions]="updatedSessions" (sesChange)="onSessionChange($event)"></app-new-sessions>
+    <app-graph [Sessions]="updatedSessions" style="width: 800px; height: 600px;"></app-graph>
+  </div>
+</div>

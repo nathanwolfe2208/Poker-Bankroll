@@ -1,0 +1,24 @@
+<table class="table-auto mb-4">
+  <thead>
+    <tr>
+      <th class="px-2 py-2 text-lg font-bold text-gray-700">Session #</th>
+      <th class="px-2 py-2 text-lg font-bold text-gray-700">Buy In</th>
+      <th class="px-2 py-2 text-lg font-bold text-gray-700">Cash Out</th>
+      <th class="px-2 py-2 text-lg font-bold text-gray-700">Time Played</th>
+      <th class="px-2 py-2 text-lg font-bold text-gray-700"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let session of Sessions; let i = index;">
+      <td class="px-4 py-2 text-lg text-gray-600">{{ i + 1 }}.</td>
+      <td class="px-4 py-2 text-lg text-gray-600">{{ session.buyIn }}</td>
+      <td class="px-4 py-2 text-lg text-gray-600">{{ session.cashOut }}</td>
+      <td class="px-4 py-2 text-lg text-gray-600">{{ session.timePlayed }}</td>
+      <td class="px-4 py-2 text-lg text-gray-600">
+        <button (click)="deleteSession(session.id)" style="border: none; background: none; padding: 0;">
+          <img src="./delete.png" alt="Delete" width="32" height="32">
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
